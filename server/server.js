@@ -3,6 +3,7 @@ require("dotenv").config();
 
   // Import dependencies
 const express = require("express");
+const cors = require("cors");
 const connectToDb = require('./config/connectToDb')
 const Order = require("./models/order")
 const ordersController = require("./controllers/orders.controller");
@@ -11,7 +12,7 @@ const ordersController = require("./controllers/orders.controller");
 
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 connectToDb();
@@ -24,9 +25,9 @@ app.get('/', (req, res) => {
 
 
 // Routing
-app.get("/orders", ordersController.fetchOrders);
-app.get("/orders/:id", ordersController.fetchOrder);
-app.post("/orders", ordersController.createOrder);
+app.get("/api/orders", ordersController.fetchOrders);
+app.get("/api/orders/:id", ordersController.fetchOrder);
+app.post("/api/orders", ordersController.createOrder);
 
 
 
