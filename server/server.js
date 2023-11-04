@@ -7,6 +7,7 @@ const cors = require("cors");
 const connectToDb = require('./config/connectToDb')
 const Order = require("./models/order")
 const ordersController = require("./controllers/orders.controller");
+const usersController = require("./controllers/users.controller");
 
 
 
@@ -25,9 +26,14 @@ app.get('/', (req, res) => {
 
 
 // Routing
-app.get("/api/orders", ordersController.fetchOrders);
-app.get("/api/orders/:id", ordersController.fetchOrder);
-app.post("/api/orders", ordersController.createOrder);
+  //User
+  app.post("/api/signup", usersController.signup);
+  app.post("/api/login", usersController.login);
+  app.get("/api/logout", usersController.logout);
+  // Order
+  app.get("/api/orders", ordersController.fetchOrders);
+  app.get("/api/orders/:id", ordersController.fetchOrder);
+  app.post("/api/orders", ordersController.createOrder);
 
 
 

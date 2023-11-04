@@ -5,7 +5,7 @@ export default function Orders() {
 
     return (
     <div>
-        <h2>Notes:</h2>
+        <h2>Orders:</h2>
         {controller.orders &&
         controller.orders.map((order) => {
             return <Order order={order} key={order._id} />;

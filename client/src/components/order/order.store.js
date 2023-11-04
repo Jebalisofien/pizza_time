@@ -1,9 +1,7 @@
 import ordersController from "../../controllers/orders.controller";
 
-export default function CreateForm() {
+export default function CreateOrder() {
     const controller = ordersController();
-
-    if (controller.updateForm._id) return <></>;
 
     return (
     
@@ -12,28 +10,28 @@ export default function CreateForm() {
             <h2>Create order</h2>
             <form onSubmit={controller.createOrder}>
             <input
-                onChange={controller.updateCreateFormField}
-                value={controller.createForm.method}
+                onChange={controller.updateCreateOrderField}
+                value={controller.orderModel.method}
                 name="method"
             />
             <input
-                onChange={controller.updateCreateFormField}
-                value={controller.createForm.size}
+                onChange={controller.updateCreateOrderField}
+                value={controller.orderModel.size}
                 name="size"
             />
             <input
-                onChange={controller.updateCreateFormField}
-                value={controller.createForm.crust}
+                onChange={controller.updateCreateOrderField}
+                value={controller.orderModel.crust}
                 name="crust"
             />
             <input
-                onChange={controller.updateCreateFormField}
-                value={controller.createForm.qty}
+                onChange={controller.updateCreateOrderField}
+                value={controller.orderModel.qty}
                 name="qty"
             />
             <input
-                onChange={controller.updateCreateFormField}
-                value={controller.createForm.toppings}
+                onChange={controller.updateCreateOrderField}
+                value={controller.orderModel.toppings}
                 name="toppings"
             />
             
