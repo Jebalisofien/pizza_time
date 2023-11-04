@@ -5,6 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const connectToDb = require('./config/connectToDb')
 const Order = require("./models/order")
+const ordersController = require("./controllers/orders.controller");
 
 
 
@@ -18,26 +19,15 @@ connectToDb();
 
 app.get('/', (req, res) => {
     res.json({Hello: "world"})
-})
-
-app.post("/orders", async (req, res) => {
-    console.log(req.body);
-    const method =req.body.method;
-    const size =req.body.size;
-    const crust =req.body.crust;
-    const qty =req.body.qty;
-    const toppings =req.body.toppings;
-
-    const order = await Order.create({
-
-        method :method,
-        size :size,
-        crust :crust,
-        qty :qty,
-        toppings :toppings
-        
-    });
-    res.json({order: order});
 });
+
+
+
+// Routing
+app.get("/orders", ordersController.fetchOrders);
+app.get("/orders/:id", ordersController.fetchOrder);
+app.post("/orders", ordersController.createOrder);
+
+
 
 app.listen(process.env.PORT);
