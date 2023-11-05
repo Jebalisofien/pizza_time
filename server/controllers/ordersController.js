@@ -1,11 +1,6 @@
 const Order = require("../models/order")
 
 
-
-
-    
-    
-
 const fetchOrders = async (req, res) => {
     // Find the orders
     const orders = await Order.find();
@@ -50,11 +45,6 @@ const fetchOrders = async (req, res) => {
     
   
     // respond with the new note
-
-
-
-
-
 
 
 module.exports = {

@@ -1,5 +1,5 @@
-import Order from "./order.single";
-import ordersController from "../../controllers/orders.controller";
+import Order from "./Order";
+import ordersController from "../../controllers/ordersController";
 export default function Orders() {
     const controller = ordersController();
 

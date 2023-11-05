@@ -1,4 +1,4 @@
-import ordersController from "../../controllers/orders.controller";
+import ordersController from "../../controllers/ordersController";
 
 export default function CreateOrder() {
     const controller = ordersController();
