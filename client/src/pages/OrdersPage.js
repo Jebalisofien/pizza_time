@@ -5,9 +5,10 @@ import CreateOrder from '../components/order/OrderCreate';
 import ordersController from '../controllers/ordersController';
 
 function OrdersPage() {
+    const controller = ordersController ()
     // Use effect
     useEffect(() => {
-        ordersController.fetchOrders();
+        controller.fetchOrders();
     }, []);
 
     return (
