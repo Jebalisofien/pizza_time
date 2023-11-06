@@ -8,7 +8,7 @@ function HomePage() {
 
     return (
         <div className="App">
-        HomePage
+        welcome
         </div>
     );
     }

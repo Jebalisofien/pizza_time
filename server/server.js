@@ -27,10 +27,6 @@ app.use(
 connectToDb();
 
 
-app.get('/', (req, res) => {
-    res.json({Hello: "world"})
-});
-
 
 
 // Routing
@@ -38,7 +34,7 @@ app.get('/', (req, res) => {
   app.post("/api/signup", usersController.signup);
   app.post("/api/login", usersController.login);
   app.get("/api/logout", usersController.logout);
-  app.get("/api/check-auth", requireAuth, usersController.checkAuth);
+  app.get("/api/check-auth", requireAuth,  usersController.checkAuth);
   // Order
   app.get("/api/orders", requireAuth, ordersController.fetchOrders);
   app.get("/api/orders/:id", requireAuth, ordersController.fetchOrder);

@@ -1,17 +1,35 @@
 
+import {  useNavigate} from "react-router-dom";
+import React from "react";
+import userController from "../controllers/userController";
 
 
-
-function SignInPage() {
+export default function LoginForm() {
     
-    
-
-    return (
-        <div className="App">
-        SignInPage
-        </div>
-    );
+    const controller = userController();
+    const navigate = useNavigate();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        await controller.login();
+        navigate("/")
     }
-
-
-    export default SignInPage;
+    return (
+        <form onSubmit={handleLogin}> 
+            <input
+                onChange={controller.updateLoginForm}
+                value={controller.loginForm.email}
+                type="email"
+                name="email"
+            />
+            <input
+                onChange={controller.updateLoginForm}
+                value={controller.loginForm.password}
+                type="password"
+                name="password"
+            />
+            <button type="submit">Login</button>
+            
+        </form>
+        
+    );
+}
