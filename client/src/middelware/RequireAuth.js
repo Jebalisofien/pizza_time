@@ -9,12 +9,11 @@ export default function RequireAuth(props) {
             controller.checkAuth();
         }
     }, []);
-        if (!controller.loggedIn === null) {
-        return ( <div>Please login</div>);
+        if (controller.loggedIn === null) {
+        return  <div>Please login</div>;
         }
-        if (!controller.loggedIn === false) {
-        return (<Navigate to="/"></Navigate>);
+        if (controller.loggedIn === false) {
+        return <Navigate to="/"></Navigate>;
         }
-        return (
-        <div>{props.children}</div>);
+        return <div>{props.children}</div>;
     }

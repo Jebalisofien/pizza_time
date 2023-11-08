@@ -13,6 +13,15 @@ const userController = create((set) => ({
         email: "",
         password:"",
     },
+    loginRegForm: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        state: "",
+        email: "",
+        password:""
+    },
 
     updateLoginForm: (e) => {
         const { name, value } = e. target;
@@ -25,6 +34,17 @@ const userController = create((set) => ({
     };
 });
 },
+    updateRegisterForm: (e) => {
+        const { name, value } = e. target;
+    set((state) => {
+    return {
+    loginRegForm: {
+    ... state. loginRegForm,
+        [name]: value,
+        },
+    };
+});
+},
 
     login: async (e) => {
         
@@ -32,7 +52,7 @@ const userController = create((set) => ({
         
         const { loginForm } = userController.getState();
         console.log(loginForm);
-        const res = await axios.post("/api/login", loginForm )
+        const res = await axios.post("/api/login", loginForm, { withCredentials: true }  )
         
             
             set({loggedIn: true});
@@ -40,13 +60,33 @@ const userController = create((set) => ({
             console.log(res);
         
     },
+    signup: async (e) => {
+        
+        
+        
+        const { loginRegForm } = userController.getState();
+        console.log(loginRegForm);
+        const res = await axios.post("/api/signup", loginRegForm )
+        
+            set(res)
+                
+            console.log(res);
+        
+    },
     checkAuth: async () => {
         try{
-        await axios.get("/api/check-auth");
+        await axios.get("/api/check-auth", { withCredentials: true });
         set({ loggedIn: true });}
         catch (err) {
         set({ loggedIn: false });
+        console.log(err)
         }
+    },
+    logout: async () => {
+    
+        await axios.get("/api/logout", { withCredentials: true });
+        set({ loggedIn: false});
+        
     },
 
 }));

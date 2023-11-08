@@ -14,7 +14,7 @@ const ordersController = create((set) => ({
 
     fetchOrders: async () => {
     // Fetch the orders
-        const res = await axios.get("/api/orders");
+        const res = await axios.get("/api/orders", { withCredentials: true });
         
       // Set to state
         set({ orders: res.data.orders });
@@ -37,7 +37,7 @@ const ordersController = create((set) => ({
         e.preventDefault();
         const { orderModel, orders } = ordersController.getState();
         console.log(orderModel); 
-        const res = await axios.post("/api/orders", orderModel);
+        const res = await axios.post("/api/orders", orderModel, { withCredentials: true });
 
         set({
             orders: [...orders, res.data.order],

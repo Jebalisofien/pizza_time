@@ -1,7 +1,7 @@
 import {  useEffect } from "react";
 
 import Orders from '../components/order/OrderList';
-import CreateOrder from '../components/order/OrderCreate';
+
 import ordersController from '../controllers/ordersController';
 
 function OrdersPage() {
@@ -14,7 +14,7 @@ function OrdersPage() {
     return (
         <div className="App">
         <Orders />
-        <CreateOrder />
+        
         </div>
     );
     }

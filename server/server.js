@@ -11,19 +11,18 @@ const Order = require("./models/order")
 const ordersController = require("./controllers/ordersController");
 const usersController = require("./controllers/usersController");
 const requireAuth = require("./middleware/requireAuth");
-
-
-
 const app = express();
-app.use(cors());
+
+
+
+const corsOptions ={
+  origin:'http://localhost:3000',
+  credentials: true
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+
 connectToDb();
 
 
