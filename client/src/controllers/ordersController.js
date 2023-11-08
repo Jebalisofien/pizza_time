@@ -2,7 +2,7 @@ import create from "zustand";
 import axios from "axios";
 
 const ordersController = create((set) => ({
-    orders: null,
+    orders: [],
 
     orderModel: {
         method:"",
@@ -14,7 +14,7 @@ const ordersController = create((set) => ({
 
     fetchOrders: async () => {
     // Fetch the orders
-        const res = await axios.get("/api/orders", { withCredentials: true });
+        const res = await axios.get("/api/orders");
         
       // Set to state
         set({ orders: res.data.orders });
@@ -32,12 +32,37 @@ const ordersController = create((set) => ({
             };
         });
     },
+    updateCreateOrderCheckbox: (e) => {
+        const { name, checked} = e.target;
+
+        set((state) => {
+            if(checked === true){
+                return {
+                    orderModel: {
+                        ...state.orderModel,
+                        toppings: {[name]: checked,},
+                        },
+                    };
+            
+            }
+            else{
+                
+                return{
+                    orderModel: {
+                        ...state.orderModel,
+                        toppings:delete [name],
+                        },
+                }
+            };
+            
+        });
+    },
 
     createOrder: async (e) => {
         e.preventDefault();
         const { orderModel, orders } = ordersController.getState();
         console.log(orderModel); 
-        const res = await axios.post("/api/orders", orderModel, { withCredentials: true });
+        const res = await axios.post("/api/orders", orderModel);
 
         set({
             orders: [...orders, res.data.order],

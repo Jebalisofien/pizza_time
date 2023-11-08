@@ -52,7 +52,7 @@ const userController = create((set) => ({
         
         const { loginForm } = userController.getState();
         console.log(loginForm);
-        const res = await axios.post("/api/login", loginForm, { withCredentials: true }  )
+        const res = await axios.post("/api/login", loginForm )
         
             
             set({loggedIn: true});
@@ -75,7 +75,7 @@ const userController = create((set) => ({
     },
     checkAuth: async () => {
         try{
-        await axios.get("/api/check-auth", { withCredentials: true });
+        await axios.get("/api/check-auth");
         set({ loggedIn: true });}
         catch (err) {
         set({ loggedIn: false });
@@ -84,7 +84,7 @@ const userController = create((set) => ({
     },
     logout: async () => {
     
-        await axios.get("/api/logout", { withCredentials: true });
+        await axios.get("/api/logout");
         set({ loggedIn: false});
         
     },

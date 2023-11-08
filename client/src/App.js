@@ -30,7 +30,7 @@ useEffect(() => {
           (<ul>
               <li> <Link to="/">Home</Link> </li>
               <li> <Link to="/orders">Orders</Link> </li>
-              <li> <Link to="/order">Order pizza</Link> </li>
+              
               <li><Link to="/logout">Logout</Link></li>
           </ul>) :
           (<ul>

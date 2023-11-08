@@ -3,10 +3,11 @@ const Order = require("../models/order")
 
 const fetchOrders = async (req, res) => {
     // Find the orders
-    const orders = await Order.find();
+    const orders = await Order.find({ user: req.user._id });
   
     // Respond with them
     res.json({ orders });
+    
   };
   
   const fetchOrder = async (req, res) => {
@@ -14,7 +15,7 @@ const fetchOrders = async (req, res) => {
     const orderId = req.params.id;
   
     // Find the order using that id
-    const order = await Order.findById(orderId);
+    const order = await Order.findOne({_id: orderId, user: req.user._id });
   
     // Respond with the order
     res.json({ order });
@@ -34,7 +35,8 @@ const fetchOrders = async (req, res) => {
         size :size,
         crust :crust,
         qty :qty,
-        toppings :toppings
+        toppings :toppings,
+        user: req.user._id,
         
     });
     res.json({order: order});
