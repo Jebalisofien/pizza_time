@@ -9,6 +9,15 @@ const fetchOrders = async (req, res) => {
     res.json({ orders });
     
   };
+const checkOrders = async (req, res) => {
+    // Find the orders
+    const orders = await Order.find({ user: req.user._id, is_purchased:false});
+    const count= orders.length;
+    console.log(count);
+    // Respond with them
+    res.json ( count );
+    
+  };
   
   const fetchOrder = async (req, res) => {
     // Get id off the url
@@ -52,6 +61,7 @@ const fetchOrders = async (req, res) => {
 module.exports = {
     fetchOrders,
     fetchOrder,
-    createOrder
+    createOrder,
+    checkOrders
     
     };

@@ -7,17 +7,25 @@ import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import RequireAuth from './middelware/RequireAuth';
 import userController from './controllers/userController';
+import orderController from './controllers/ordersController';
 import LogoutPage from './pages/LogoutPage';
 import CreateOrderPage from './pages/CreateOrderPage';
 
 
 function App() {
 const controller = userController();
+const oController = orderController();
 useEffect(() => {
   if (controller.loggedIn === null) {
       controller.checkAuth();
   }
 }, []);
+useEffect(() => {
+
+      
+      oController.checkOrders()
+}, []);
+      
   return (
     <div className="App">
       <h1>Pizza Pete's</h1>
@@ -29,7 +37,7 @@ useEffect(() => {
         {controller.loggedIn ?
           (<ul>
               <li> <Link to="/">Home</Link> </li>
-              <li> <Link to="/orders">Orders</Link> </li>
+              <li> <Link to="/orders">Orders {oController.pendingOrders}</Link> </li>
               
               <li><Link to="/logout">Logout</Link></li>
           </ul>) :

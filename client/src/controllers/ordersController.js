@@ -1,16 +1,21 @@
 import create from "zustand";
 import axios from "axios";
 
+
 const ordersController = create((set) => ({
     orders: [],
-
+    pendingOrders: null,
+    
     orderModel: {
         method:"",
         size:"",
         crust:"",
         qty:"",
-        toppings:""
+        toppings:[],
+        is_purchased: false
     },
+
+    
 
     fetchOrders: async () => {
     // Fetch the orders
@@ -32,49 +37,69 @@ const ordersController = create((set) => ({
             };
         });
     },
-    updateCreateOrderCheckbox: (e) => {
-        const { name, checked} = e.target;
 
+    updateCreateOrderCheckbox: (e) => {
+        const { name, checked } = e.target;
+ 
         set((state) => {
-            if(checked === true){
+            const { toppings } = state.orderModel;
+            // Case 1 : The user checks the box
+            if (checked) {
                 return {
-                    orderModel: {
-                        ...state.orderModel,
-                        toppings: {[name]: checked,},
-                        },
-                    };
-            
+                orderModel: {
+                    ...state.orderModel,
+                    toppings: [...toppings, name]
+                },
+                };
             }
-            else{
-                
-                return{
-                    orderModel: {
-                        ...state.orderModel,
-                        toppings:delete [name],
-                        },
+            // Case 2  : The user unchecks the box
+            else {
+                return {
+                orderModel: {
+                    ...state.orderModel,
+                    toppings: toppings.filter( (e) => e !== name),
                 }
-            };
-            
+                };
+            }
         });
     },
+
+    checkOrders: async () => {
+        
+        await axios.get("/api/check-orders") .then(res=>{
+        set({ pendingOrders: res.data });
+        
+        
+        })
+        
+        .catch(err=>{ console.log(err.response.data.errors)});
+        
+        
+    },
+
 
     createOrder: async (e) => {
         e.preventDefault();
         const { orderModel, orders } = ordersController.getState();
         console.log(orderModel); 
         const res = await axios.post("/api/orders", orderModel);
+        
 
         set({
             orders: [...orders, res.data.order],
+
             orderModel: {
             method:"",
             size:"",
             crust:"",
             qty:"",
-            toppings:""
+            is_purchased: false,
+            toppings: orderModel.toppings
             },
         });
+        
     },
+    
 }));
 
 export default ordersController;

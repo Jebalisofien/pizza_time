@@ -36,6 +36,7 @@ connectToDb();
   app.get("/api/check-auth", requireAuth,  usersController.checkAuth);
   // Order
   app.get("/api/orders", requireAuth, ordersController.fetchOrders);
+  app.get("/api/check-orders", requireAuth, ordersController.checkOrders);
   app.get("/api/orders/:id", requireAuth, ordersController.fetchOrder);
   app.post("/api/orders", requireAuth, ordersController.createOrder);
 

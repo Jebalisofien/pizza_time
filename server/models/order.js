@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema({
     qty: {type: String},
     toppings: {type: Object},
     is_favorite: {type: Boolean, default: false},
-    is_purchase: {type: Boolean, default: false},
+    is_purchased: {type: Boolean, default: false},
     price: {type: Number},
     user:{ type: mongoose.Schema.Types.ObjectId,  
         ref:"User", },

@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
 import ordersController from "../../controllers/ordersController";
+import Form from 'react-bootstrap/Form';
 
 export default function CreateOrder() {
     const controller = ordersController();
+    
 
     return (
     
@@ -34,9 +37,16 @@ export default function CreateOrder() {
                 <option value="5">5</option>
                 
             </select>
+            <input type="checkbox" id="pepperoni" name="pepperoni" onChange={controller.updateCreateOrderCheckbox} />
+            <label htmlFor="pepperoni"> Pepperoni</label>
+            <input type="checkbox" id="cheese" name="cheese" onChange={controller.updateCreateOrderCheckbox} />
+            <label htmlFor="cheese"> Cheese</label>
+            <input type="checkbox" id="meat" name="meat" onChange={controller.updateCreateOrderCheckbox} />
+            <label htmlFor="meat"> Meat</label>
             
-            <input type="checkbox" name="pepperoni" onChange={controller.updateCreateOrderCheckbox}  />
-                
+            
+            
+           
             
 
 
