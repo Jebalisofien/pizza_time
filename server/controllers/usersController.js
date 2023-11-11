@@ -20,6 +20,23 @@ async function signup(req, res) {
     }
 }
 
+async function updateAccount(req, res) {
+    try {
+    // Get the email and password off req body
+    const { firstName, lastName, address, city, state, email  } = req.body;
+    
+        
+    // Create a user with the daTa
+    await User.findByIdAndUpdate(req.user._id, {
+        firstName, lastName, address, city, state, email });
+    // respond
+    res.sendStatus(200);
+    } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+    }
+}
+
 async function login(req, res) {
     try {
     // Get the email and password off rq body
@@ -76,4 +93,5 @@ module.exports = {
     login,
     logout,
     checkAuth,
+    updateAccount
 };

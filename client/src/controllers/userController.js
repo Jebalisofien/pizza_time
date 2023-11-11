@@ -73,6 +73,21 @@ const userController = create((set) => ({
             console.log(res);
         
     },
+
+
+    updateAccount: async (e) => {
+        
+        
+        
+        const { loginRegForm } = userController.getState();
+        console.log(loginRegForm);
+        const res = await axios.post("/api/update-account", loginRegForm )
+        
+            set(res)
+                
+            console.log(res);
+        
+    },
     checkAuth: async () => {
         try{
         await axios.get("/api/check-auth");

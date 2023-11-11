@@ -7,13 +7,13 @@ import userController from "../controllers/userController";
 function SignUpPage() {
     const controller = userController();
     const navigate = useNavigate();
-    const handleLogin = async (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
         await controller.signup();
         navigate("/signin")
     }
     return (
-        <form onSubmit={handleLogin}> 
+        <form onSubmit={handleSignup}> 
             <input
                 onChange={controller.updateRegisterForm}
                 value={controller.loginRegForm.firstName}

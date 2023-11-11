@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
-import ordersController from "../../controllers/ordersController";
-import Form from 'react-bootstrap/Form';
+import ordersController from '../../controllers/ordersController';
+
+import { useNavigate } from "react-router-dom";
+
 
 export default function CreateOrder() {
+    const navigate= useNavigate();
     const controller = ordersController();
+    const handleSubmit= async (e) => {
+        e.preventDefault();
+        try
+        {
+
+            controller.createOrder();
+            navigate ("/cart");
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
     
 
     return (
@@ -11,7 +26,7 @@ export default function CreateOrder() {
     
     <div>
             <h2>Create order</h2>
-            <form onSubmit={controller.createOrder}>
+            <form onSubmit={handleSubmit}>
             
             
             <select name="method" onChange={controller.updateCreateOrderField} value={controller.orderModel.method}>

@@ -10,21 +10,20 @@ import userController from './controllers/userController';
 import orderController from './controllers/ordersController';
 import LogoutPage from './pages/LogoutPage';
 import CreateOrderPage from './pages/CreateOrderPage';
+import CartPage from './pages/CartPage';
+import CheckOrders from './components/order/CheckOrders';
+import AccountPage from './pages/AccountPage';
 
 
 function App() {
 const controller = userController();
-const oController = orderController();
+
 useEffect(() => {
   if (controller.loggedIn === null) {
       controller.checkAuth();
   }
 }, []);
-useEffect(() => {
 
-      
-      oController.checkOrders()
-}, []);
       
   return (
     <div className="App">
@@ -37,7 +36,9 @@ useEffect(() => {
         {controller.loggedIn ?
           (<ul>
               <li> <Link to="/">Home</Link> </li>
-              <li> <Link to="/orders">Orders {oController.pendingOrders}</Link> </li>
+              
+              <li> <Link to="/cart">Orders<CheckOrders /> </Link> </li>
+              <li> <Link to="/account">Account </Link> </li>
               
               <li><Link to="/logout">Logout</Link></li>
           </ul>) :
@@ -55,7 +56,9 @@ useEffect(() => {
           <Route path='/Logout' element={<LogoutPage />} />
 
           <Route path='/orders' element={<RequireAuth><OrdersPage /></RequireAuth>} />
+          <Route path='/cart' element={<RequireAuth><CartPage /></RequireAuth>} />
           <Route path='/order' element={<RequireAuth><CreateOrderPage /></RequireAuth>} />
+          <Route path='/account' element={<RequireAuth><AccountPage /></RequireAuth>} />
           
 
         </Routes>
