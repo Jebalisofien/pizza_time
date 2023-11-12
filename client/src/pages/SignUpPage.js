@@ -14,50 +14,80 @@ function SignUpPage() {
     }
     return (
         <form onSubmit={handleSignup}> 
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.firstName}
-                type="string"
-                name="firstName"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.lastName}
-                type="string"
-                name="lastName"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.address}
-                type="string"
-                name="address"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.city}
-                type="string"
-                name="city"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.state}
-                type="string"
-                name="state"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.email}
-                type="email"
-                name="email"
-            />
-            <input
-                onChange={controller.updateRegisterForm}
-                value={controller.loginRegForm.password}
-                type="password"
-                name="password"
-            />
-            <button type="submit">Register</button>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    
+                    <input class="form-control is-valid" placeholder="First name"  required
+                        onChange={controller.updateRegisterForm}
+                        value={controller.loginRegForm.firstName}
+                        type="string"
+                        name="firstName"
+                    />
+                </div></div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        
+                        <input class="form-control is-valid" placeholder="Last name"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.lastName}
+                            type="string"
+                            name="lastName"
+                        />
+                    </div>
+                </div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <input class="form-control is-valid" placeholder="Address"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.address}
+                            type="string"
+                            name="address"
+                        />
+                    </div>
+                </div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <input class="form-control is-valid" placeholder="City"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.city}
+                            type="string"
+                            name="city"
+                        />
+                    </div>
+                </div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <input class="form-control is-valid" placeholder="State"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.state}
+                            type="string"
+                            name="state"
+                        />
+                    </div>
+                </div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <input class="form-control is-valid" placeholder="Email"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.email}
+                            type="email"
+                            name="email"
+                        />
+                    </div>
+                </div>
+                <div class="nav justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <input class="form-control is-valid" placeholder="Password"  required
+                            onChange={controller.updateRegisterForm}
+                            value={controller.loginRegForm.password}
+                            type="password"
+                            name="password"
+                        />
+                    </div>
+                </div>
+            <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
             
+        
         </form>
         
     );

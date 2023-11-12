@@ -94,7 +94,7 @@ const ordersController = create((set) => ({
             //const { order } = requestedorder;
             // Case 1 : The user checks the box
             if (checked) {
-                await axios.post("/api/favorite", {requestedorder}) .then(res=>{
+                await axios.post("/api/favorite") .then(res=>{
                     
                 })
         

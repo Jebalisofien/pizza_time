@@ -7,12 +7,13 @@ import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import RequireAuth from './middelware/RequireAuth';
 import userController from './controllers/userController';
-import orderController from './controllers/ordersController';
 import LogoutPage from './pages/LogoutPage';
 import CreateOrderPage from './pages/CreateOrderPage';
 import CartPage from './pages/CartPage';
 import CheckOrders from './components/order/CheckOrders';
 import AccountPage from './pages/AccountPage';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -22,30 +23,40 @@ useEffect(() => {
   if (controller.loggedIn === null) {
       controller.checkAuth();
   }
-}, []);
+}, [])
 
       
   return (
     <div className="App">
       <h1>Pizza Pete's</h1>
-      <h3>Please register or login to order your Pizza</h3>
+
 
 
       
       <BrowserRouter>
         {controller.loggedIn ?
-          (<ul>
-              <li> <Link to="/">Home</Link> </li>
+          (
+            <nav class="nav justify-content-center">
               
-              <li> <Link to="/cart">Orders<CheckOrders /> </Link> </li>
-              <li> <Link to="/account">Account </Link> </li>
+              <ul  class="list navbar-expand-lg navbar-light bg-light d-flex " >
+                  <li class=" navbar-brand mb-0 h1 m-3"> <Link to="/">Home</Link> </li>
+                  
+                  <li class="navbar-brand mb-0 h1 m-3"> <Link to="/cart">Orders<CheckOrders /> </Link> </li>
+                  <li class="navbar-brand mb-0 h1 m-3"> <Link to="/account">Account </Link> </li>
+                  
+                  <li class="navbar-brand mb-0 h1 m-3"><Link to="/logout">Logout</Link></li>
+                  </ul>
+              </nav>
+            ): (
+            <nav class="nav justify-content-center">
               
-              <li><Link to="/logout">Logout</Link></li>
-          </ul>) :
-          (<ul>
-              <li><Link to="/signin">SignIn</Link></li>
-              <li><Link to="/signup">SignUp</Link></li>
-          </ul>)
+              
+            <ul class="list navbar navbar-expand-lg navbar-light bg-light">
+                <li class="navbar-brand mb-0 h1 m-3"><Link class="nav-link" to="/signin">SignIn</Link></li>
+                <li class="navbar-brand mb-0 h1 m-3"><Link class="nav-link" to="/signup">SignUp</Link></li>
+            </ul>
+            </nav>
+          )
         }
       
       

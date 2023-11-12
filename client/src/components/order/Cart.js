@@ -25,7 +25,7 @@ export default function Cart() {
         {
 
             controller.purchaseOrders();
-            navigate ("/orders");
+            navigate ("/");
         }
         catch(e){
             console.log(e)
@@ -33,14 +33,15 @@ export default function Cart() {
     }
 
     return (
-    <div>
+    <div >
+        
         <h2>Orders:</h2>
         {controller.orders &&
         controller.orders.map((order) => {
             return <Order order={order} key={order._id} />;
         })}
-        <button onClick={handleDelete} >Start Over</button>
-        <button onClick={handlePurchase} >Purchase</button>
+        <button class="btn btn-primary mb-2" onClick={handleDelete} >Start Over</button>
+        <button class="btn btn-primary mb-2" onClick={handlePurchase} >Purchase</button>
     </div>
     );
 }

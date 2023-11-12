@@ -15,60 +15,82 @@ export default function Account() {
 
     return (
         
-    <div>
-        <div>
+    <div className="App">
+        <div class="row">
+    <div class="nav justify-content-center">
+        <div class="col-sm-6">
+            <h2>Account Info</h2>
         <form onSubmit={handleAccountUpdate}> 
-            <input
+        <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+            <input class="form-control is-valid" placeholder="First Name"
                 onChange={uController.updateRegisterForm}
                 value={uController.loginRegForm.firstName}
                 type="string"
                 name="firstName"
             />
-            <input
-                onChange={uController.updateRegisterForm}
-                value={uController.loginRegForm.lastName}
-                type="string"
-                name="lastName"
-            />
-            <input
-                onChange={uController.updateRegisterForm}
-                value={uController.loginRegForm.address}
-                type="string"
-                name="address"
-            />
-            <input
-                onChange={uController.updateRegisterForm}
-                value={uController.loginRegForm.city}
-                type="string"
-                name="city"
-            />
-            <input
-                onChange={uController.updateRegisterForm}
-                value={uController.loginRegForm.state}
-                type="string"
-                name="state"
-            />
-            <input
-                onChange={uController.updateRegisterForm}
-                value={uController.loginRegForm.email}
-                type="email"
-                name="email"
-            />
+            </div></div>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control is-valid" placeholder="Last Name"
+                        onChange={uController.updateRegisterForm}
+                        value={uController.loginRegForm.lastName}
+                        type="string"
+                        name="lastName"
+                    />
+            </div></div>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control is-valid" placeholder="Address"
+                        onChange={uController.updateRegisterForm}
+                        value={uController.loginRegForm.address}
+                        type="string"
+                        name="address"
+                    />
+            </div></div>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control is-valid" placeholder="City"
+                        onChange={uController.updateRegisterForm}
+                        value={uController.loginRegForm.city}
+                        type="string"
+                        name="city"
+                    />
+            </div></div>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control is-valid" placeholder="State"
+                        onChange={uController.updateRegisterForm}
+                        value={uController.loginRegForm.state}
+                        type="string"
+                        name="state"
+                    />
+            </div></div>
+            <div class="nav justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input class="form-control is-valid" placeholder="Email"
+                        onChange={uController.updateRegisterForm}
+                        value={uController.loginRegForm.email}
+                        type="email"
+                        name="email"
+                    />
+            </div></div>
             
-            <button type="submit">Register</button>
+            <button class="btn btn-primary mb-2" type="submit">Update</button>
             
         </form>
         
     
         </div>
 
-        <div>
-            <h2>Orders:</h2>
+        <div class="col-md-4 mb-3" >
+            <h2>Past Orders:</h2>
             {oController.orders &&
             oController.orders.map((order) => {
                 return <PastOrder order={order} key={order._id} />;
             })}
+            
         </div>
-    </div>
+    </div></div></div>
     );
 }

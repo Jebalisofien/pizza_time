@@ -15,13 +15,23 @@ export default function PastOrder({ order }) {
         }
     }
 
+
+        
+        
+        
+    
+
     return (
-    <div style= {{textAlign: "left",border: "1px solid black", maxWidth: "500px", margin: "10px auto"}} key={order._id}>
-        <p>{order.method}</p>
-        <p>{order.qty}</p>
-        <p>{order.size}</p>
-        <p>{order.crust}</p>
-        <p>{order.toppings}</p>
+        <div class= "nav justify-content-center" key={order._id}>
+            <div class="form-control mb-2">
+            
+            <p> Method :{order.method}</p>
+            <p>QTE :{ order.qty}</p>
+            <p>Size :{order.size}</p>
+            <p>Crust :{order.crust}</p>
+            <p>Toppings :{order.toppings}</p>
+            <p><h5>Price : { order.qty*10}$</h5></p>
+            </div>
         <input type="checkbox" id="favorite" name="favorite" onChange={handleChange} />
             <label htmlFor="favorite"> Favorite</label>
     </div>
